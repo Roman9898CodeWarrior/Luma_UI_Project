@@ -3,13 +3,10 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import org.junit.jupiter.api.*;
 import utils.User;
 import io.github.cdimascio.dotenv.Dotenv;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import pages.home.HomePage;
 
 import java.io.IOException;
@@ -61,5 +58,10 @@ public class AbstractTest {
 
     private void initializeUser() {
         User.initialize(dotenv);
+    }
+
+    @AfterEach
+    void closeDriver() {
+        Selenide.closeWebDriver();
     }
 }
