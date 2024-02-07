@@ -3,6 +3,7 @@ package pages.login_user;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import pages.reset_password.ResetPasswordPage;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -11,15 +12,19 @@ public class LoginPage {
     private final SelenideElement password  = $("input#pass");
     private final SelenideElement signInBtn  = $("button.action.login");
     private final SelenideElement emailErrorMessage = $("div#email-error");
+    private final SelenideElement passwordErrorMessage = $("div#pass-error");
+    private final SelenideElement invalidCredentialsErrorMessage = $("div.message-error div");
+    private final SelenideElement forgotPassword = $("a.remind");
+    private final SelenideElement resetPasswordMessage = $("div.message-success div");
 
-    @Step("Entering user first name {value}")
+    @Step("Entering user email {value}")
     public LoginPage enterEmail(String value) {
         email.setValue(value);
 
         return this;
     }
 
-    @Step("Entering user last name {value}")
+    @Step("Entering user password {value}")
     public LoginPage enterPassword(String value) {
         password.setValue(value);
 
@@ -33,15 +38,37 @@ public class LoginPage {
         return new MyAccountPage();
     }
 
-    @Step("Clicking sign in button")
+    @Step("Clicking sign in button for negative cases (no redirection to an My Account Page")
     public LoginPage clickSignInBtnNegative() {
         signInBtn.click();
 
         return this;
     }
 
+    @Step("Clicking 'Forgot Your Password?'")
+    public ResetPasswordPage clickForgotPassword() {
+        forgotPassword.click();
+
+        return new ResetPasswordPage();
+    }
+
     @Step("Check email error message")
     public void checkEmailErrorMessage(String expectedErrorMessage) {
         emailErrorMessage.shouldHave(Condition.text(expectedErrorMessage));
+    }
+
+    @Step("Check password error message")
+    public void checkPasswordErrorMessage(String expectedErrorMessage) {
+        passwordErrorMessage.shouldHave(Condition.text(expectedErrorMessage));
+    }
+
+    @Step("Check invalid credentials error message")
+    public void checkInvalidCredentialsErrorMessage(String expectedErrorMessage) {
+        invalidCredentialsErrorMessage.shouldHave(Condition.text(expectedErrorMessage));
+    }
+
+    @Step("Check reset password message")
+    public void checkResetPasswordMessage(String expectedMessage) {
+        resetPasswordMessage.shouldHave(Condition.text(expectedMessage));
     }
 }

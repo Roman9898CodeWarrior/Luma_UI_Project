@@ -60,7 +60,7 @@ public class CreateAccountPage {
         return new AddressBookPage();
     }
 
-    @Step("Click 'Create an account' button for negative cases(no redirection to an Address Book Page")
+    @Step("Click 'Create an account' button for negative cases (no redirection to an Address Book Page)")
     public CreateAccountPage clickCreateAccountBtnNegative() {
         createAnAccountBtn.click();
 
