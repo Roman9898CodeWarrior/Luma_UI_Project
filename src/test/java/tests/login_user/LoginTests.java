@@ -6,7 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.home.HomePage;
 import pages.login_user.LoginPage;
-import pages.login_user.MyAccountPage;
 import tests.AbstractTest;
 
 public class LoginTests extends AbstractTest {
@@ -14,17 +13,16 @@ public class LoginTests extends AbstractTest {
     @DisplayName("Check the functionality of user login")
     @Test
     void loginUserTest() {
-        String expectedMessageText = "Welcome, AutotestFirstName";
 
         LoginPage loginPage = new HomePage()
                 .openSignInPage();
 
-        MyAccountPage myAccountPage = loginPage
+        HomePage homePage = loginPage
                 .enterEmail(User.getEmail())
                 .enterPassword(User.getPassword())
                 .clickSignInBtn();
 
-        myAccountPage.checkUserFirstName(expectedMessageText);
+        homePage.checkUserFirstName(User.getName(), User.getLastname());
     }
 
 

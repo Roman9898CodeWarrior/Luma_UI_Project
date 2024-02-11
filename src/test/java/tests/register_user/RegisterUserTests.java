@@ -4,7 +4,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.home.HomePage;
-import pages.register_user.AddressBookPage;
+import pages.register_user.MyAccountPage;
 import pages.register_user.CreateAccountPage;
 import tests.AbstractTest;
 
@@ -19,7 +19,7 @@ public class RegisterUserTests extends AbstractTest {
         CreateAccountPage createAccountPage = new HomePage()
                 .openSignUpPage();
 
-        AddressBookPage addressBookPage = createAccountPage
+        MyAccountPage myAccountPage = createAccountPage
                 .enterName("Alex")
                 .enterLastname("Black")
                 .enterEmail("user" + RandomStringUtils.randomNumeric(5) + "@gmail.com")
@@ -27,7 +27,7 @@ public class RegisterUserTests extends AbstractTest {
                 .enterConfirmPassword(password)
                 .clickCreateAccountBtn();
 
-        addressBookPage.checkMessage(expectedMessageText);
+        myAccountPage.checkMessage(expectedMessageText);
     }
 
     @DisplayName("Check the functionality of registering a user - negative case (invalid email)")

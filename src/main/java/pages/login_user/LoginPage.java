@@ -3,6 +3,7 @@ package pages.login_user;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import pages.home.HomePage;
 import pages.reset_password.ResetPasswordPage;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -32,13 +33,22 @@ public class LoginPage {
     }
 
     @Step("Clicking sign in button")
-    public MyAccountPage clickSignInBtn() {
+    public HomePage clickSignInBtn() {
         signInBtn.click();
 
-        return new MyAccountPage();
+        return new HomePage();
     }
 
-    @Step("Clicking sign in button for negative cases (no redirection to an My Account Page")
+    @Step("Logging in")
+    public HomePage loggingIn(String emailValue, String passwordValue) {
+        email.setValue(emailValue);
+        password.setValue(passwordValue);
+        signInBtn.click();
+
+        return new HomePage();
+    }
+
+    @Step("Clicking sign in button for negative cases (no redirection to Home Page")
     public LoginPage clickSignInBtnNegative() {
         signInBtn.click();
 

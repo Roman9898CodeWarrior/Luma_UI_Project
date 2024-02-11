@@ -1,16 +1,19 @@
 package pages.login_user;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;
+import pages.address_book.AddressBookDetailsPage;
 
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.$$;
 
 public class MyAccountPage {
-    SelenideElement headerUserName = $("span.logged-in");
+    private final ElementsCollection sideMenu = $$("ul.nav.items a");
 
-    @Step("Check that user successfully logged in")
-    public void checkUserFirstName (String expectedText) {
-        headerUserName.shouldHave(Condition.text(expectedText));
+    @Step("CLick 'Address Book'")
+    public AddressBookDetailsPage clickAddressBook () {
+        sideMenu.find(text("Address Book")).click();
+
+        return new AddressBookDetailsPage();
     }
 }

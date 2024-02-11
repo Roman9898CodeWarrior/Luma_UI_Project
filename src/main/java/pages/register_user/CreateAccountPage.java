@@ -54,10 +54,10 @@ public class CreateAccountPage {
     }
 
     @Step("Click 'Create an account' button")
-    public AddressBookPage clickCreateAccountBtn() {
+    public MyAccountPage clickCreateAccountBtn() {
         createAnAccountBtn.click();
 
-        return new AddressBookPage();
+        return new MyAccountPage();
     }
 
     @Step("Click 'Create an account' button for negative cases (no redirection to an Address Book Page)")
