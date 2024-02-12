@@ -3,6 +3,7 @@ package pages.address_book;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
 public class EditAddressPage {
@@ -12,6 +13,7 @@ public class EditAddressPage {
     private final SelenideElement zip = $("input#zip");
     private final SelenideElement country = $("select#country");
     private final SelenideElement saveBtn = $("button.save");
+    private final SelenideElement streetAddressError = $("div#street_1-error");
 
     @Step("Entering user phone number {value}")
     public EditAddressPage enterPhoneNumber(String value) {
@@ -23,6 +25,13 @@ public class EditAddressPage {
     @Step("Entering user street address {value}")
     public EditAddressPage enterStreetAddress(String value) {
         streetAddress.setValue(value);
+
+        return this;
+    }
+
+    @Step("Clearing user street address")
+    public EditAddressPage clearStreetAddress() {
+        streetAddress.clear();
 
         return this;
     }
@@ -48,7 +57,7 @@ public class EditAddressPage {
         return this;
     }
 
-    @Step("Click 'Create an account' button")
+    @Step("Click 'Save Address' button")
     public AddressBookDetailsPage clickSaveBtn() {
         saveBtn.click();
 
@@ -62,4 +71,8 @@ public class EditAddressPage {
         return this;
     }
 
+    @Step("Checking changed Street Address Error: {addressError} expected")
+    public void checkStreetAddressError(String addressError) {
+        streetAddressError.shouldHave(text(addressError));
+    }
 }
