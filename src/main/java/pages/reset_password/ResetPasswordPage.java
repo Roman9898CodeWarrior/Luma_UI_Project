@@ -33,7 +33,7 @@ public class ResetPasswordPage {
         return this;
     }
 
-    @Step("Check email error message")
+    @Step("Checking email error message: {expectedErrorMessage} expected")
     public void checkEmailErrorMessage(String expectedErrorMessage) {
         emailErrorMessage.shouldHave(Condition.text(expectedErrorMessage));
     }

@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$$;
 public class MyAccountPage {
     private final ElementsCollection sideMenu = $$("ul.nav.items a");
 
-    @Step("CLick 'Address Book'")
+    @Step("CLicking 'Address Book'")
     public AddressBookDetailsPage clickAddressBook () {
         sideMenu.find(text("Address Book")).click();
 

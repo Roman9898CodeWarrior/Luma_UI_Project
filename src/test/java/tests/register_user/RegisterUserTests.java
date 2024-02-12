@@ -69,7 +69,7 @@ public class RegisterUserTests extends AbstractTest {
 
     @DisplayName("Check the functionality of registering a user - negative case (insufficient password complexity)")
     @Test
-    void registerUserTestInsufficientPasswordComplexity () {
+    void registerUserTestInsufficientPasswordComplexity() {
         String expectedMessageText = "Minimum of different classes of characters in password is 3. Classes of characters: Lower Case, Upper Case, Digits, Special Characters.";
         String password = RandomStringUtils.randomNumeric(5) + "*?%;";
 
@@ -87,7 +87,7 @@ public class RegisterUserTests extends AbstractTest {
 
     @DisplayName("Check the functionality of registering a user - negative case (invalid password confirmation)")
     @Test
-    void registerUserTestInvalidPasswordConfirmation () {
+    void registerUserTestInvalidPasswordConfirmation() {
         String expectedMessageText = "Please enter the same value again.";
 
         CreateAccountPage createAccountPage = new HomePage()
@@ -105,7 +105,7 @@ public class RegisterUserTests extends AbstractTest {
 
     @DisplayName("Check the functionality of registering a user - negative case (first name field is empty)")
     @Test
-    void registerUserTestNameFieldIsEmpty () {
+    void registerUserTestNameFieldIsEmpty() {
         String expectedMessageText = "This is a required field.";
         String password = RandomStringUtils.randomNumeric(5) + "*?%;";
 

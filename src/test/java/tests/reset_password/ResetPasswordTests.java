@@ -50,7 +50,7 @@ public class ResetPasswordTests extends AbstractTest {
 
     @DisplayName("Check the functionality of resetting password - negative case (email field is empty)")
     @Test
-    void resetPasswordEmailFieldIsEmpty() {
+    void resetPasswordTestEmailFieldIsEmpty() {
         String expectedMessageText = "This is a required field.";
 
         LoginPage loginPage = new HomePage()

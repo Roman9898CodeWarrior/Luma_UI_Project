@@ -13,7 +13,6 @@ public class LoginTests extends AbstractTest {
     @DisplayName("Check the functionality of user login")
     @Test
     void loginUserTest() {
-
         LoginPage loginPage = new HomePage()
                 .openSignInPage();
 
@@ -24,7 +23,6 @@ public class LoginTests extends AbstractTest {
 
         homePage.checkUserFirstName(User.getName(), User.getLastname());
     }
-
 
     @DisplayName("Check the functionality of user login - negative case (invalid email)")
     @Test
@@ -43,7 +41,7 @@ public class LoginTests extends AbstractTest {
 
     @DisplayName("Check the functionality of user login - negative case (email field is empty)")
     @Test
-    void loginUserEmailFieldIsEmpty() {
+    void loginUserTestEmailFieldIsEmpty() {
         String expectedMessageText = "This is a required field";
 
         LoginPage loginPage = new HomePage()

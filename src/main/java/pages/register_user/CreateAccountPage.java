@@ -53,36 +53,36 @@ public class CreateAccountPage {
         return this;
     }
 
-    @Step("Click 'Create an account' button")
+    @Step("Clicking 'Create an account' button")
     public MyAccountPage clickCreateAccountBtn() {
         createAnAccountBtn.click();
 
         return new MyAccountPage();
     }
 
-    @Step("Click 'Create an account' button for negative cases (no redirection to an Address Book Page)")
+    @Step("Clicking 'Create an account' button for negative cases (no redirection to an Address Book Page)")
     public CreateAccountPage clickCreateAccountBtnNegative() {
         createAnAccountBtn.click();
 
         return this;
     }
 
-    @Step("Check password error message")
+    @Step("Checking password error message: {expectedErrorMessage} expected")
     public void checkPasswordErrorMessage(String expectedErrorMessage) {
         passwordErrorMessage.shouldHave(Condition.text(expectedErrorMessage));
     }
 
-    @Step("Check email error message")
+    @Step("Checking email error message: {expectedErrorMessage} expected")
     public void checkEmailErrorMessage(String expectedErrorMessage) {
         emailErrorMessage.shouldHave(Condition.text(expectedErrorMessage));
     }
 
-    @Step("Check password confirmation error message")
+    @Step("Checking password confirmation error message: {expectedErrorMessage} expected")
     public void checkPasswordConfirmationErrorMessage(String expectedErrorMessage) {
         passwordConfirmationErrorMessage.shouldHave(Condition.text(expectedErrorMessage));
     }
 
-    @Step("Check first name error message")
+    @Step("Checking first name error message: {expectedErrorMessage} expected")
     public void checkFirstnameConfirmationErrorMessage(String expectedErrorMessage) {
         firstnameErrorMessage.shouldHave(Condition.text(expectedErrorMessage));
     }

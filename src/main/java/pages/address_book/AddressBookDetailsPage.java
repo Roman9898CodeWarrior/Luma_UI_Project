@@ -18,7 +18,7 @@ public class AddressBookDetailsPage {
         return new EditAddressPage();
     }
 
-    @Step("Checking changed Billing Address")
+    @Step("Checking changed Billing Address: {phoneNumber}, {streetAddress}, {city}, {zip}, {country} expected")
     public void checkChangedBillingAddress(String phoneNumber, String streetAddress, String city, String zip, String country) {
         billingAddress.shouldHave(and("required fields",
                         text(phoneNumber),

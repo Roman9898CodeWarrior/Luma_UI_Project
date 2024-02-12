@@ -39,20 +39,20 @@ public class LoginPage {
         return new HomePage();
     }
 
-    @Step("Logging in")
-    public HomePage loggingIn(String emailValue, String passwordValue) {
-        email.setValue(emailValue);
-        password.setValue(passwordValue);
-        signInBtn.click();
-
-        return new HomePage();
-    }
-
     @Step("Clicking sign in button for negative cases (no redirection to Home Page")
     public LoginPage clickSignInBtnNegative() {
         signInBtn.click();
 
         return this;
+    }
+
+    @Step("Logging in")
+    public HomePage loggingIn(String emailValue, String passwordValue) {
+        enterEmail(emailValue);
+        enterPassword(passwordValue);
+        clickSignInBtn();
+
+        return new HomePage();
     }
 
     @Step("Clicking 'Forgot Your Password?'")
@@ -62,23 +62,23 @@ public class LoginPage {
         return new ResetPasswordPage();
     }
 
-    @Step("Check email error message")
+    @Step("Checking email error message: {expectedErrorMessage} expected")
     public void checkEmailErrorMessage(String expectedErrorMessage) {
         emailErrorMessage.shouldHave(Condition.text(expectedErrorMessage));
     }
 
-    @Step("Check password error message")
+    @Step("Checking password error message: {expectedErrorMessage} expected")
     public void checkPasswordErrorMessage(String expectedErrorMessage) {
         passwordErrorMessage.shouldHave(Condition.text(expectedErrorMessage));
     }
 
-    @Step("Check invalid credentials error message")
+    @Step("Checking invalid credentials error message: {expectedErrorMessage} expected")
     public void checkInvalidCredentialsErrorMessage(String expectedErrorMessage) {
         invalidCredentialsErrorMessage.shouldHave(Condition.text(expectedErrorMessage));
     }
 
-    @Step("Check reset password message")
-    public void checkResetPasswordMessage(String expectedMessage) {
-        resetPasswordMessage.shouldHave(Condition.text(expectedMessage));
+    @Step("Checking reset password message: {expectedErrorMessage} expected")
+    public void checkResetPasswordMessage(String expectedErrorMessage) {
+        resetPasswordMessage.shouldHave(Condition.text(expectedErrorMessage));
     }
 }

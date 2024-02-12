@@ -14,7 +14,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class HomePage {
-    private final SelenideElement signInBtn = $("li.authorization-link a");
+    private final SelenideElement signInBtn = $(By.linkText("Sign In"));
     private final SelenideElement signUpBtn = $(By.linkText("Create an Account"));
     private final SelenideElement topBar = $("span.logged-in");
     private final SelenideElement dropdownArrow = $("button[data-action='customer-menu-toggle']");
@@ -42,7 +42,7 @@ public class HomePage {
         return new MyAccountPage();
     }
 
-    @Step("Check that user successfully logged in")
+    @Step("Checking that user successfully logged in: {expectedUserName} and {expectedUserLastname} expected")
     public void checkUserFirstName (String expectedUserName, String expectedUserLastname) {
         topBar.shouldHave(and("required fields",
                 text(expectedUserName),
