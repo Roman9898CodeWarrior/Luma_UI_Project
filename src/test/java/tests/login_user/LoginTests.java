@@ -21,7 +21,7 @@ public class LoginTests extends AbstractTest {
                 .enterPassword(User.getPassword())
                 .clickSignInBtn();
 
-        homePage.checkUserFirstName(User.getName(), User.getLastname());
+        homePage.checkUserPersonalInfo(User.getName());
     }
 
     @DisplayName("Check the functionality of user login - negative case (invalid email)")

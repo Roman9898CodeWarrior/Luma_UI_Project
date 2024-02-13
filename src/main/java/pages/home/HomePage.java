@@ -8,7 +8,6 @@ import pages.login_user.LoginPage;
 import pages.login_user.MyAccountPage;
 import pages.register_user.CreateAccountPage;
 
-import static com.codeborne.selenide.Condition.and;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -42,10 +41,8 @@ public class HomePage {
         return new MyAccountPage();
     }
 
-    @Step("Checking that user successfully logged in: {expectedUserName} and {expectedUserLastname} expected")
-    public void checkUserFirstName (String expectedUserName, String expectedUserLastname) {
-        topBar.shouldHave(and("required fields",
-                text(expectedUserName),
-                text(expectedUserLastname)));
+    @Step("Checking that user successfully logged in: {value} expected")
+    public void checkUserPersonalInfo(String value) {
+        topBar.shouldHave(text(value));
     }
 }
