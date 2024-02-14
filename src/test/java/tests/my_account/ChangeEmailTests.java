@@ -10,31 +10,7 @@ import pages.my_account.EditAccountInformationPage;
 import tests.AbstractTest;
 import utils.User;
 
-public class MyAccountTests extends AbstractTest {
-
-    @DisplayName("Check the functionality of changing user lastname")
-    @Test
-    void changeLastnameTest() {
-        String lastname = "Autotest" + RandomStringUtils.randomNumeric(7);
-
-        LoginPage loginPage = new HomePage()
-                .openSignInPage();
-
-        HomePage homePage = loginPage
-                .loggingIn(User.getEmail(), User.getPassword());
-
-        MyAccountPage myAccountPage = homePage
-                .clickMyAccount();
-
-        EditAccountInformationPage editAccountInformationPage = myAccountPage
-                .clickAccountInformation();
-
-        myAccountPage = editAccountInformationPage
-                .enterLastname(lastname)
-                .clickSaveBtn();
-
-        myAccountPage.checkAccountInformation(lastname);
-    }
+public class ChangeEmailTests extends AbstractTest {
 
     @DisplayName("Check the functionality of changing user email - negative case (invalid email)")
     @Test
