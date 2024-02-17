@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import pages.login_user.LoginPage;
 import pages.login_user.MyAccountPage;
 import pages.register_user.CreateAccountPage;
+import pages.women_tops.WomenTopsPage;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
@@ -16,6 +17,8 @@ public class HomePage {
     private final SelenideElement signInBtn = $(By.linkText("Sign In"));
     private final SelenideElement signUpBtn = $(By.linkText("Create an Account"));
     private final SelenideElement topBar = $("span.logged-in");
+    private final ElementsCollection menuPanel = $$("a.level-top");
+    private final SelenideElement topsLink = $(By.linkText("Tops"));
     private final SelenideElement dropdownArrow = $("button[data-action='customer-menu-toggle']");
     private final ElementsCollection dropdownMenu = $$("ul.header.links a");
 
@@ -34,7 +37,7 @@ public class HomePage {
     }
 
     @Step("Going to My Account Page")
-    public MyAccountPage clickMyAccount () {
+    public MyAccountPage clickMyAccount() {
         dropdownArrow.click();
         dropdownMenu.find(text("My Account")).click();
 
@@ -44,5 +47,13 @@ public class HomePage {
     @Step("Checking that user successfully logged in: {value} expected")
     public void checkUserPersonalInfo(String value) {
         topBar.shouldHave(text(value));
+    }
+
+    @Step("Going to Women Tops Page")
+    public WomenTopsPage clickWomenTops() {
+        menuPanel.find(text("Women")).hover();
+        topsLink.click();
+
+        return new WomenTopsPage();
     }
 }
