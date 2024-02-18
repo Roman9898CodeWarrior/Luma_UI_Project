@@ -18,6 +18,8 @@ public class WomenTopsPage {
     private final ElementsCollection filteredItemsColor = $$("div[aria-label='Color']");
     private final ElementsCollection priceFilter = $$("div.filter-options-content span.price");
     private final SelenideElement clearFilter = $("a.action.filter-clear");
+    private final SelenideElement searchField = $("input#search");
+    private final ElementsCollection clothesNames = $$("a.product-item-link");
 
     @Step("Sort items by price")
     public WomenTopsPage sortItemsByPrice() {
@@ -79,5 +81,18 @@ public class WomenTopsPage {
             int priceValue = Integer.parseInt(priceElement.getAttribute("data-price-amount"));
             assertFalse("Price is not in range 60-69 dollars", priceValue >= 60 && priceValue <= 69);
         });
+    }
+
+    @Step("Searching clothes by {value} keyword")
+    public WomenTopsPage searchForItemsUsingKeyword(String value) {
+        searchField.setValue(value);
+        searchField.pressEnter();
+
+        return this;
+    }
+
+    @Step("Checking that prices are not in range 60-69 dollars")
+    public void checkItemsNames(String value) {
+        clothesNames.forEach(clothesName -> clothesName.shouldHave(text(value)));
     }
 }
