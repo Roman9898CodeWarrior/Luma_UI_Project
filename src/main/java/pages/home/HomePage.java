@@ -6,9 +6,11 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import pages.login_user.LoginPage;
 import pages.login_user.MyAccountPage;
+import pages.men_bottoms.MenBottomsPage;
 import pages.register_user.CreateAccountPage;
 import pages.women_tops.WomenTopsPage;
 
+import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -19,6 +21,7 @@ public class HomePage {
     private final SelenideElement topBar = $("span.logged-in");
     private final ElementsCollection menuPanel = $$("a.level-top");
     private final SelenideElement topsLink = $(By.linkText("Tops"));
+    private final SelenideElement bottomsLink = $(By.linkText("Bottoms"));
     private final SelenideElement dropdownArrow = $("button[data-action='customer-menu-toggle']");
     private final ElementsCollection dropdownMenu = $$("ul.header.links a");
 
@@ -55,5 +58,13 @@ public class HomePage {
         topsLink.click();
 
         return new WomenTopsPage();
+    }
+
+    @Step("Going to Men Bottoms Page")
+    public MenBottomsPage clickMenBottoms() {
+        menuPanel.find(exactText("Men")).hover();
+        bottomsLink.click();
+
+        return new MenBottomsPage();
     }
 }
