@@ -14,8 +14,7 @@ public class MenBottomsPage {
     private final ElementsCollection sizeOptions = $$("div[aria-label='Size'] div");
     private final ElementsCollection colorOptions = $$("div[aria-label='Color'] div");
     private final ElementsCollection prices = $$("span[data-price-type='finalPrice']");
-    private final SelenideElement cart = $("a.action.showcart");
-    private final SelenideElement viewCartButton = $("a.action.viewcart");
+    private final SelenideElement goToCart = $("div[role='alert'] a");
 
     @Step("Adding first item to cart")
     public MenBottomsPage addFirstItemToCart() {
@@ -27,7 +26,7 @@ public class MenBottomsPage {
     }
 
     @Step("Adding second item to cart")
-    public MenBottomsPage addingSecondItemToCart() {
+    public MenBottomsPage addSecondItemToCart() {
         items.get(1).$("div[aria-label='Size'] div").click();
         items.get(1).$("div[aria-label='Color'] div").click();
         items.get(1).$("button.tocart").click();
@@ -35,16 +34,9 @@ public class MenBottomsPage {
         return this;
     }
 
-    @Step("Clicking on cart button")
-    public MenBottomsPage clickCart() {
-        cart.click();
-
-        return this;
-    }
-
-    @Step("Clicking 'View and Edit Cart'")
-    public CartPage clickViewCart() {
-        viewCartButton.click();
+    @Step("Clicking 'Shopping cart' link")
+    public CartPage goToCart() {
+        goToCart.click();
 
         return new CartPage();
     }

@@ -34,8 +34,7 @@ public class AddToCartTest extends AbstractTest {
 
         CartPage cartPage = menBottomsPage
                 .addFirstItemToCart()
-                .clickCart()
-                .clickViewCart();
+                .goToCart();
 
         cartPage
                 .checkItemAddedToCart(firstItemName, firstItemPrice, firstItemColor, firstItemSize);
