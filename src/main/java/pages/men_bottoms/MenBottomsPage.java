@@ -25,6 +25,13 @@ public class MenBottomsPage {
         return this;
     }
 
+    @Step("Clicking on first item")
+    public FirstItemPage clickOnFirstItem() {
+        items.first().click();
+
+        return new FirstItemPage();
+    }
+
     @Step("Adding second item to cart")
     public MenBottomsPage addSecondItemToCart() {
         items.get(1).$("div[aria-label='Size'] div").click();

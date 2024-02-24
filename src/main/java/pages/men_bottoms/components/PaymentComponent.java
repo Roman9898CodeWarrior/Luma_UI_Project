@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class PaymentComponent {
     private final SelenideElement placeOrderBtn = $("button.action.checkout");
     private final SelenideElement applyDiscountCode  = $("span#block-discount-heading");
-    private final SelenideElement discountCodeField = $("discount-code");
+    private final SelenideElement discountCodeField = $("input#discount-code");
     private final SelenideElement applyDiscountBtn = $("button.action-apply");
     private final SelenideElement discountError = $("div[data-role='checkout-messages'] div");
 

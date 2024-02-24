@@ -99,9 +99,11 @@ public class PlaceAnOrderTest extends AbstractTest {
         thankYouForPurchasePage.checkOrderMessage(orderMessage);
     }
 
-    @DisplayName("Check the functionality of placing an order and adding new shipping address")
+    @DisplayName("Check the functionality of placing an order and adding new shipping address - negative case (city field is empty)")
     @Test
     void addNewShippingAddressCityFieldIsEmptyTest() {
+        String pageTitle= "Thank you for your purchase!";
+        String orderMessage= "We'll email you an order confirmation with details and tracking info.";
         String errorMessage = "This is a required field.";
         ShippingAddressModel fields = ShippingAddressModel.builder()
                 .firstname(RandomStringUtils.randomAlphabetic(5))
@@ -137,5 +139,63 @@ public class PlaceAnOrderTest extends AbstractTest {
                 .checkSaveInAddressBookCheckbox()
                 .clickShipHereBtnNegative()
                 .checkCityFieldIsEmptyErrorMessage(errorMessage);
+
+        orderDetailsPage
+                .getShippingAddressComponent()
+                .enterCity("Seoul")
+                .checkSaveInAddressBookCheckbox()
+                .clickShipHereBtn()
+                .clickNextBtn();
+
+        ThankYouForPurchasePage thankYouForPurchasePage = orderDetailsPage
+                .getPaymentComponent()
+                .clickPlaceOrderBtn();
+
+        thankYouForPurchasePage.checkPageTitle(pageTitle);
+
+        thankYouForPurchasePage.checkOrderMessage(orderMessage);
+    }
+
+    @DisplayName("Check the functionality of placing an order")
+    @Test
+    void placeOrderInvalidDiscountCodeTest() {
+        String pageTitle= "Thank you for your purchase!";
+        String orderMessage= "We'll email you an order confirmation with details and tracking info.";
+        String discountCode= "1";
+        String errorMessage= "The coupon code isn't valid. Verify the code and try again.";
+
+        LoginPage loginPage = new HomePage()
+                .openSignInPage();
+
+        HomePage homePage = loginPage
+                .loggingIn(User.getEmail(), User.getPassword());
+
+        MenBottomsPage menBottomsPage = homePage
+                .clickMenBottoms();
+
+        CartPage cartPage = menBottomsPage
+                .addFirstItemToCart()
+                .addSecondItemToCart()
+                .goToCart();
+
+        OrderDetailsPage orderDetailsPage = cartPage
+                .clickProceedToCheckout();
+
+        orderDetailsPage
+                .getShippingAddressComponent()
+                .clickNextBtn();
+
+        orderDetailsPage
+                .getPaymentComponent()
+                .applyInvalidDiscountCode(discountCode)
+                .checkInvalidDiscountCodeErrorMessage(errorMessage);
+
+        ThankYouForPurchasePage thankYouForPurchasePage = orderDetailsPage
+                .getPaymentComponent()
+                .clickPlaceOrderBtn();
+
+        thankYouForPurchasePage.checkPageTitle(pageTitle);
+
+        thankYouForPurchasePage.checkOrderMessage(orderMessage);
     }
 }
