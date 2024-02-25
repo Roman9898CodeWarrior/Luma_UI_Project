@@ -9,7 +9,7 @@ import tests.AbstractTest;
 import utils.User;
 
 public class GoToItemPageTest extends AbstractTest {
-    @DisplayName("Check the functionality of placing an order")
+    @DisplayName("Check the functionality of going to an item's page")
     @Test
     void goToItemPageTest() {
         LoginPage loginPage = new HomePage()
