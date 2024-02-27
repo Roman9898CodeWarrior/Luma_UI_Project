@@ -4,6 +4,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import pages.gear_bags.GearBagsPage;
 import pages.login_user.LoginPage;
 import pages.login_user.MyAccountPage;
 import pages.men_bottoms.MenBottomsPage;
@@ -22,6 +23,7 @@ public class HomePage {
     private final ElementsCollection menuPanel = $$("a.level-top");
     private final SelenideElement topsLink = $(By.linkText("Tops"));
     private final SelenideElement bottomsLink = $(By.linkText("Bottoms"));
+    private final SelenideElement bagsLink = $(By.linkText("Bags"));
     private final SelenideElement dropdownArrow = $("button[data-action='customer-menu-toggle']");
     private final ElementsCollection dropdownMenu = $$("ul.header.links a");
 
@@ -66,5 +68,13 @@ public class HomePage {
         bottomsLink.click();
 
         return new MenBottomsPage();
+    }
+
+    @Step("Going to Bags Page")
+    public GearBagsPage clickBags() {
+        menuPanel.find(text("Gear")).hover();
+        bagsLink.click();
+
+        return new GearBagsPage();
     }
 }
