@@ -1,8 +1,8 @@
-package tests.gear_bags;
+package tests.shop;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pages.gear_bags.GearBagsPage;
+import pages.shop.GearBagsPage;
 import pages.home.HomePage;
 import pages.login_user.LoginPage;
 import tests.AbstractTest;

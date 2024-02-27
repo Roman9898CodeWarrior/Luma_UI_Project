@@ -1,4 +1,4 @@
-package pages.men_bottoms;
+package pages.shop;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;

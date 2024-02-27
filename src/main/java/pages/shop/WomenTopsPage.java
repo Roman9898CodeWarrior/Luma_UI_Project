@@ -1,4 +1,4 @@
-package pages.women_tops;
+package pages.shop;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -19,7 +19,7 @@ public class WomenTopsPage {
     private final ElementsCollection priceFilter = $$("div.filter-options-content span.price");
     private final SelenideElement clearFilter = $("a.action.filter-clear");
     private final SelenideElement searchField = $("input#search");
-    private final ElementsCollection clothesNames = $$("a.product-item-link");
+    private final ElementsCollection clothesNames = $$("ol.products.product-items a.product-item-link");
 
     @Step("Sort items by price")
     public WomenTopsPage sortItemsByPrice() {
@@ -91,7 +91,7 @@ public class WomenTopsPage {
         return this;
     }
 
-    @Step("Checking that prices are not in range 60-69 dollars")
+    @Step("Checking item's name {value} expected")
     public void checkItemsNames(String value) {
         clothesNames.forEach(clothesName -> clothesName.shouldHave(text(value)));
     }

@@ -1,4 +1,4 @@
-package pages.gear_bags;
+package pages.shop;
 
 import com.codeborne.selenide.ElementsCollection;
 import io.qameta.allure.Step;

@@ -1,10 +1,10 @@
-package tests.women_tops;
+package tests.shop;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.home.HomePage;
 import pages.login_user.LoginPage;
-import pages.women_tops.WomenTopsPage;
+import pages.shop.WomenTopsPage;
 import tests.AbstractTest;
 import utils.User;
 

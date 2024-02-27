@@ -1,4 +1,4 @@
-package pages.men_bottoms;
+package pages.shop;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;

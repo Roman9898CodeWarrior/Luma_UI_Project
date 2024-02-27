@@ -1,9 +1,9 @@
-package pages.men_bottoms;
+package pages.shop;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import pages.men_bottoms.components.PaymentComponent;
-import pages.men_bottoms.components.ShippingAddressComponent;
+import pages.shop.components.PaymentComponent;
+import pages.shop.components.ShippingAddressComponent;
 
 import static com.codeborne.selenide.Selenide.$;
 

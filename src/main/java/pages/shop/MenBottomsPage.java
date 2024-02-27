@@ -1,9 +1,8 @@
-package pages.men_bottoms;
+package pages.shop;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import pages.men_bottoms.components.ComparisonListPage;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;

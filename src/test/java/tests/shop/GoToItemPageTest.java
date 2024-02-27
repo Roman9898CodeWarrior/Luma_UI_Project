@@ -1,10 +1,11 @@
-package tests.men_bottoms;
+package tests.shop;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.home.HomePage;
 import pages.login_user.LoginPage;
-import pages.men_bottoms.*;
+import pages.shop.FirstItemPage;
+import pages.shop.MenBottomsPage;
 import tests.AbstractTest;
 import utils.User;
 

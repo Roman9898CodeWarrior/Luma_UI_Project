@@ -1,4 +1,4 @@
-package tests.men_bottoms;
+package tests.shop;
 
 import models.ShippingAddressModel;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -6,10 +6,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.home.HomePage;
 import pages.login_user.LoginPage;
-import pages.men_bottoms.CartPage;
-import pages.men_bottoms.MenBottomsPage;
-import pages.men_bottoms.OrderDetailsPage;
-import pages.men_bottoms.ThankYouForPurchasePage;
+import pages.shop.CartPage;
+import pages.shop.MenBottomsPage;
+import pages.shop.OrderDetailsPage;
+import pages.shop.ThankYouForPurchasePage;
 import tests.AbstractTest;
 import utils.User;
 

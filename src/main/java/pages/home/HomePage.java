@@ -4,12 +4,12 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import pages.gear_bags.GearBagsPage;
+import pages.shop.GearBagsPage;
 import pages.login_user.LoginPage;
 import pages.login_user.MyAccountPage;
-import pages.men_bottoms.MenBottomsPage;
+import pages.shop.MenBottomsPage;
 import pages.register_user.CreateAccountPage;
-import pages.women_tops.WomenTopsPage;
+import pages.shop.WomenTopsPage;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.text;
