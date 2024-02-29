@@ -6,6 +6,7 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ChangeEmailComponent {
+
     private final SelenideElement email = $("input#email");
     private final SelenideElement currentPassword = $("input#current-password");
     private final SelenideElement emailError = $("div#email-error");
@@ -18,7 +19,7 @@ public class ChangeEmailComponent {
         return this;
     }
 
-    @Step("Clearing user email {value}")
+    @Step("Clearing user email")
     public ChangeEmailComponent clearEmailField() {
         email.clear();
 

@@ -15,12 +15,12 @@ public class ComparisonListPage {
     private final SelenideElement deleteBtn = $("a.delete");
     private final SelenideElement confirmDeleteBtn = $("button.action-accept");
 
-    @Step("Checking item's price")
+    @Step("Checking item's price: {price} expected")
     public void checkItemPrice(String price) {
         itemsInComparisonList.first().$("span.price-wrapper").shouldHave(text(price));
     }
 
-    @Step("Checking item's name")
+    @Step("Checking item's name: {name} expected")
     public void checkItemName(String name) {
         itemsInComparisonList.first().$("strong.product-item-name").shouldHave(text(name));
     }

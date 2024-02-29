@@ -10,12 +10,12 @@ import pages.my_account.components.ChangePasswordComponent;
 import static com.codeborne.selenide.Selenide.$;
 
 public class EditAccountInformationPage {
+
     private final SelenideElement lastname  = $("input#lastname");
     private final SelenideElement changeEmailCheckbox = $("input#change-email");
     private final SelenideElement invalidPasswordError = $("div.message-error div");
     private final SelenideElement changePasswordCheckbox = $("input#change-password");
     private final SelenideElement saveBtn = $("button.action.save");
-
     public ChangeEmailComponent changeEmailComponent;
     public ChangePasswordComponent changePasswordComponent;
 
@@ -67,7 +67,7 @@ public class EditAccountInformationPage {
         return new MyAccountPage();
     }
 
-    @Step("Checking password error message: {expectedErrorMessage} expected")
+    @Step("Checking password error message: {passwordErrorMessage} expected")
     public void checkInvalidPasswordErrorMessage(String passwordErrorMessage) {
         invalidPasswordError.shouldHave(Condition.text(passwordErrorMessage));
     }

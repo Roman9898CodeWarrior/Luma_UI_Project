@@ -33,7 +33,7 @@ public class AddToCartTest extends AbstractTest {
                 .getFirstItemName();
 
         CartPage cartPage = menBottomsPage
-                .addFirstItemToCart()
+                .addItemsToCartByIndex(0)
                 .goToCart();
 
         cartPage

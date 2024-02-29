@@ -8,6 +8,7 @@ import pages.login_user.LoginPage;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ResetPasswordPage {
+
     private final SelenideElement email = $("input#email_address");
     private final SelenideElement resetBtn  = $("button.action.submit");
     private final SelenideElement emailErrorMessage = $("div#email_address-error");

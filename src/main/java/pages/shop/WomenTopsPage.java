@@ -11,6 +11,7 @@ import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 
 public class WomenTopsPage {
+
     private final SelenideElement sorterDropdown = $("select#sorter");
     private final ElementsCollection productPrices = $$("span.price-wrapper");
     private final ElementsCollection filterOptions = $$("div.filter-options div.filter-options-item");
@@ -79,7 +80,7 @@ public class WomenTopsPage {
     public void checkPricesNotInRange() {
         productPrices.forEach(priceElement -> {
             int priceValue = Integer.parseInt(priceElement.getAttribute("data-price-amount"));
-            assertFalse("Price is not in range 60-69 dollars", priceValue >= 60 && priceValue <= 69);
+            assertFalse("Price is in range 60-69 dollars", priceValue >= 60 && priceValue <= 69);
         });
     }
 

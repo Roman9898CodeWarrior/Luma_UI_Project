@@ -8,13 +8,14 @@ import pages.shop.ThankYouForPurchasePage;
 import static com.codeborne.selenide.Selenide.$;
 
 public class PaymentComponent {
+
     private final SelenideElement placeOrderBtn = $("button.action.checkout");
     private final SelenideElement applyDiscountCode  = $("span#block-discount-heading");
     private final SelenideElement discountCodeField = $("input#discount-code");
     private final SelenideElement applyDiscountBtn = $("button.action-apply");
     private final SelenideElement discountError = $("div[data-role='checkout-messages'] div");
 
-    @Step("Clicking 'Change Email' checkbox")
+    @Step("Clicking 'Place Order' button")
     public ThankYouForPurchasePage clickPlaceOrderBtn() {
         placeOrderBtn.click();
 
@@ -22,7 +23,7 @@ public class PaymentComponent {
     }
 
 
-    @Step("Applying invalid discount code")
+    @Step("Applying invalid discount code {value}")
     public PaymentComponent applyInvalidDiscountCode(String value) {
         applyDiscountCode.click();
         discountCodeField.setValue(value);

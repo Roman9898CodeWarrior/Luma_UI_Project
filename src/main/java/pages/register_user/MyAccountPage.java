@@ -7,6 +7,7 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Selenide.$;
 
 public class MyAccountPage {
+
     private final SelenideElement alertMessage = $("div[role='alert'] div div");
 
     @Step("Checking the alert message: {value} expected")

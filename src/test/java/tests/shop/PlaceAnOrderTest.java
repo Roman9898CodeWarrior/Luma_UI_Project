@@ -31,8 +31,8 @@ public class PlaceAnOrderTest extends AbstractTest {
                 .clickMenBottoms();
 
         CartPage cartPage = menBottomsPage
-                .addFirstItemToCart()
-                .addSecondItemToCart()
+                .addItemsToCartByIndex(0)
+                .addItemsToCartByIndex(1)
                 .goToCart();
 
         OrderDetailsPage orderDetailsPage = cartPage.clickProceedToCheckout();
@@ -76,8 +76,8 @@ public class PlaceAnOrderTest extends AbstractTest {
                 .clickMenBottoms();
 
         CartPage cartPage = menBottomsPage
-                .addFirstItemToCart()
-                .addSecondItemToCart()
+                .addItemsToCartByIndex(0)
+                .addItemsToCartByIndex(1)
                 .goToCart();
 
         OrderDetailsPage orderDetailsPage = cartPage.clickProceedToCheckout();
@@ -126,8 +126,8 @@ public class PlaceAnOrderTest extends AbstractTest {
                 .clickMenBottoms();
 
         CartPage cartPage = menBottomsPage
-                .addFirstItemToCart()
-                .addSecondItemToCart()
+                .addItemsToCartByIndex(0)
+                .addItemsToCartByIndex(1)
                 .goToCart();
 
         OrderDetailsPage orderDetailsPage = cartPage.clickProceedToCheckout();
@@ -174,8 +174,8 @@ public class PlaceAnOrderTest extends AbstractTest {
                 .clickMenBottoms();
 
         CartPage cartPage = menBottomsPage
-                .addFirstItemToCart()
-                .addSecondItemToCart()
+                .addItemsToCartByIndex(0)
+                .addItemsToCartByIndex(1)
                 .goToCart();
 
         OrderDetailsPage orderDetailsPage = cartPage

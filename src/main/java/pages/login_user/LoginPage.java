@@ -9,6 +9,7 @@ import pages.reset_password.ResetPasswordPage;
 import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage {
+
     private final SelenideElement email = $("input#email");
     private final SelenideElement password  = $("input#pass");
     private final SelenideElement signInBtn  = $("button.action.login");

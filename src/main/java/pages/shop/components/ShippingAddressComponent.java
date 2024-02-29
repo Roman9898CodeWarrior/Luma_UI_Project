@@ -8,6 +8,7 @@ import models.ShippingAddressModel;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ShippingAddressComponent {
+
     private final SelenideElement nextBtn = $("button.action.continue");
     private final SelenideElement firstname = $("input[name='firstname']");
     private final SelenideElement lastname = $("input[name='lastname']");
@@ -29,7 +30,7 @@ public class ShippingAddressComponent {
         return this;
     }
 
-    @Step("Clicking 'Change Email' checkbox")
+    @Step("Clicking 'Next' checkbox")
     public PaymentComponent clickNextBtn() {
         nextBtn.click();
 

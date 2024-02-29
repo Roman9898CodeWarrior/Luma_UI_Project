@@ -7,6 +7,7 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ChangePasswordComponent {
+
     private final SelenideElement newPassword = $("input#password");
     private final SelenideElement confirmPassword = $("input#password-confirmation");
     private final SelenideElement confirmPasswordError = $("div#password-confirmation-error");

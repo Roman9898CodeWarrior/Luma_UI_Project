@@ -17,6 +17,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class HomePage {
+
     private final SelenideElement signInBtn = $(By.linkText("Sign In"));
     private final SelenideElement signUpBtn = $(By.linkText("Create an Account"));
     private final SelenideElement topBar = $("span.logged-in");

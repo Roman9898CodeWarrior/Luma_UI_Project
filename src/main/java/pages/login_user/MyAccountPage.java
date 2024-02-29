@@ -11,10 +11,11 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class MyAccountPage {
+
     private final ElementsCollection sideMenu = $$("ul.nav.items a");
     private final SelenideElement contactInformation = $("div.box-information div.box-content");
 
-    @Step("CLicking 'Address Book'")
+    @Step("Clicking 'Address Book'")
     public AddressBookDetailsPage clickAddressBook () {
         sideMenu.find(text("Address Book")).click();
 

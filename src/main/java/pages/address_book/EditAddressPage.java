@@ -7,6 +7,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
 public class EditAddressPage {
+
     private final SelenideElement phoneNumber = $("input#telephone");
     private final SelenideElement streetAddress = $("input#street_1");
     private final SelenideElement city = $("input#city");
@@ -71,7 +72,7 @@ public class EditAddressPage {
         return this;
     }
 
-    @Step("Checking changed Street Address Error: {addressError} expected")
+    @Step("Checking changed street address error: {addressError} expected")
     public void checkStreetAddressError(String addressError) {
         streetAddressError.shouldHave(text(addressError));
     }

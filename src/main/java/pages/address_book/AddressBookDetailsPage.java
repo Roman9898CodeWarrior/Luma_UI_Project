@@ -8,6 +8,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
 public class AddressBookDetailsPage {
+
     private final SelenideElement changeAddressBtn = $("div.box-address-billing a.edit");
     private final SelenideElement billingAddress = $("div.box-address-billing div.box-content");
 

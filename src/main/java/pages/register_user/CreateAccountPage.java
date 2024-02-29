@@ -7,6 +7,7 @@ import com.codeborne.selenide.Condition;
 import static com.codeborne.selenide.Selenide.$;
 
 public class CreateAccountPage {
+
     private final SelenideElement firstname = $("input#firstname");
     private final SelenideElement lastname  = $("input#lastname");
     private final SelenideElement email = $("input#email_address");

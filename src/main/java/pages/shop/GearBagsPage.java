@@ -22,6 +22,6 @@ public class GearBagsPage {
 
     @Step("Checking that all items were filtered by style")
     public void checkItemsNames(String value) {
-        bagsNames.forEach(clothesName -> clothesName.shouldHave(text(value)));
+        bagsNames.forEach(bagName -> bagName.shouldHave(text(value)));
     }
 }

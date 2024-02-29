@@ -16,11 +16,11 @@ public class MenBottomsPage {
     private final ElementsCollection prices = $$("span[data-price-type='finalPrice']");
     private final SelenideElement messageLink = $("div[role='alert'] a");
 
-    @Step("Adding first item to cart")
-    public MenBottomsPage addFirstItemToCart() {
-        items.first().$("div[aria-label='Size'] div").click();
-        items.first().$("div[aria-label='Color'] div").click();
-        items.first().$("button.tocart").click();
+    @Step("Adding item to cart by index")
+    public MenBottomsPage addItemsToCartByIndex(int index) {
+        items.get(index).$("div[aria-label='Size'] div").click();
+        items.get(index).$("div[aria-label='Color'] div").click();
+        items.get(index).$("button.tocart").click();
 
         return this;
     }
@@ -46,15 +46,6 @@ public class MenBottomsPage {
         items.first().click();
 
         return new FirstItemPage();
-    }
-
-    @Step("Adding second item to cart")
-    public MenBottomsPage addSecondItemToCart() {
-        items.get(1).$("div[aria-label='Size'] div").click();
-        items.get(1).$("div[aria-label='Color'] div").click();
-        items.get(1).$("button.tocart").click();
-
-        return this;
     }
 
     @Step("Clicking 'Shopping cart' link")
