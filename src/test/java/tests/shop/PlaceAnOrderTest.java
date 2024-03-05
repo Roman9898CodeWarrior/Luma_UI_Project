@@ -35,7 +35,8 @@ public class PlaceAnOrderTest extends AbstractTest {
                 .addItemsToCartByIndex(1)
                 .goToCart();
 
-        OrderDetailsPage orderDetailsPage = cartPage.clickProceedToCheckout();
+        OrderDetailsPage orderDetailsPage = cartPage
+                .clickProceedToCheckout();
 
         orderDetailsPage
                 .getShippingAddressComponent()
@@ -45,9 +46,11 @@ public class PlaceAnOrderTest extends AbstractTest {
                 .getPaymentComponent()
                 .clickPlaceOrderBtn();
 
-        thankYouForPurchasePage.checkPageTitle(pageTitle);
+        thankYouForPurchasePage
+                .checkPageTitle(pageTitle);
 
-        thankYouForPurchasePage.checkOrderMessage(orderMessage);
+        thankYouForPurchasePage
+                .checkOrderMessage(orderMessage);
     }
 
     @DisplayName("Check the functionality of placing an order and adding new shipping address")
@@ -80,7 +83,8 @@ public class PlaceAnOrderTest extends AbstractTest {
                 .addItemsToCartByIndex(1)
                 .goToCart();
 
-        OrderDetailsPage orderDetailsPage = cartPage.clickProceedToCheckout();
+        OrderDetailsPage orderDetailsPage = cartPage
+                .clickProceedToCheckout();
 
         orderDetailsPage
                 .getShippingAddressComponent()
@@ -94,9 +98,11 @@ public class PlaceAnOrderTest extends AbstractTest {
                 .getPaymentComponent()
                 .clickPlaceOrderBtn();
 
-        thankYouForPurchasePage.checkPageTitle(pageTitle);
+        thankYouForPurchasePage
+                .checkPageTitle(pageTitle);
 
-        thankYouForPurchasePage.checkOrderMessage(orderMessage);
+        thankYouForPurchasePage
+                .checkOrderMessage(orderMessage);
     }
 
     @DisplayName("Check the functionality of placing an order and adding new shipping address - negative case (city field is empty)")
@@ -130,7 +136,8 @@ public class PlaceAnOrderTest extends AbstractTest {
                 .addItemsToCartByIndex(1)
                 .goToCart();
 
-        OrderDetailsPage orderDetailsPage = cartPage.clickProceedToCheckout();
+        OrderDetailsPage orderDetailsPage = cartPage
+                .clickProceedToCheckout();
 
         orderDetailsPage
                 .getShippingAddressComponent()
@@ -151,12 +158,14 @@ public class PlaceAnOrderTest extends AbstractTest {
                 .getPaymentComponent()
                 .clickPlaceOrderBtn();
 
-        thankYouForPurchasePage.checkPageTitle(pageTitle);
+        thankYouForPurchasePage
+                .checkPageTitle(pageTitle);
 
-        thankYouForPurchasePage.checkOrderMessage(orderMessage);
+        thankYouForPurchasePage
+                .checkOrderMessage(orderMessage);
     }
 
-    @DisplayName("Check the functionality of placing an order")
+    @DisplayName("Check the functionality of placing an order - negative case (invalid discount code)")
     @Test
     void placeOrderInvalidDiscountCodeTest() {
         String pageTitle= "Thank you for your purchase!";
@@ -194,8 +203,10 @@ public class PlaceAnOrderTest extends AbstractTest {
                 .getPaymentComponent()
                 .clickPlaceOrderBtn();
 
-        thankYouForPurchasePage.checkPageTitle(pageTitle);
+        thankYouForPurchasePage
+                .checkPageTitle(pageTitle);
 
-        thankYouForPurchasePage.checkOrderMessage(orderMessage);
+        thankYouForPurchasePage
+                .checkOrderMessage(orderMessage);
     }
 }

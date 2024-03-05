@@ -10,6 +10,7 @@ import tests.AbstractTest;
 import utils.User;
 
 public class GoToItemPageTest extends AbstractTest {
+
     @DisplayName("Check the functionality of going to an item's page")
     @Test
     void goToItemPageTest() {
@@ -23,13 +24,14 @@ public class GoToItemPageTest extends AbstractTest {
                 .clickMenBottoms();
 
         String firstItemPrice = menBottomsPage
-                .getFirstItemPrice();
+                .getItemPrice(0);
         String firstItemName = menBottomsPage
-                .getFirstItemName();
+                .getItemName(0);
 
         FirstItemPage firstItemPage = menBottomsPage
-                .clickOnFirstItem();
+                .clickOnItem(0);
 
-        firstItemPage.checkItemNameAndPrice(firstItemName, firstItemPrice);
+        firstItemPage
+                .checkItemNameAndPrice(firstItemName, firstItemPrice);
     }
 }

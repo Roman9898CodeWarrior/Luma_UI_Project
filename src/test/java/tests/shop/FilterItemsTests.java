@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.home.HomePage;
 import pages.login_user.LoginPage;
+import pages.shop.GearBagsPage;
 import pages.shop.WomenTopsPage;
 import tests.AbstractTest;
 import utils.User;
@@ -23,8 +24,8 @@ public class FilterItemsTests extends AbstractTest {
                 .clickWomenTops();
 
         womenTopsPage
-                .filterItemsByColor("Color")
-                .checkEachItemIsInBlueColor();
+                .filterItemsByColor("Color", "Blue")
+                .checkEachItemIsInBlueColor("Blue");
     }
 
     @DisplayName("Check the functionality of filtering clothes by price")
@@ -41,7 +42,7 @@ public class FilterItemsTests extends AbstractTest {
 
         womenTopsPage
                 .filterItemsByPrice("Price", "$60.00")
-                .checkPricesInRange();
+                .checkPricesInRange(60, 69);
     }
 
     @DisplayName("Check the functionality of clearing filters")
@@ -58,10 +59,29 @@ public class FilterItemsTests extends AbstractTest {
 
         womenTopsPage
                 .filterItemsByPrice("Price", "$60.00")
-                .checkPricesInRange();
+                .checkPricesInRange(60, 69);
 
         womenTopsPage
                 .clickClearAll()
-                .checkPricesNotInRange();
+                .checkPricesNotInRange(60, 69);
+    }
+
+    @DisplayName("Check the functionality of filtering bags by style")
+    @Test
+    void filterBagsByStyleTest() {
+        String bagStyle = "Backpack";
+
+        LoginPage loginPage = new HomePage()
+                .openSignInPage();
+
+        HomePage homePage = loginPage
+                .loggingIn(User.getEmail(), User.getPassword());
+
+        GearBagsPage gearBagsPage = homePage
+                .clickBags();
+
+        gearBagsPage
+                .filterItemsByStyle("Style", bagStyle)
+                .checkItemsNames(bagStyle);
     }
 }

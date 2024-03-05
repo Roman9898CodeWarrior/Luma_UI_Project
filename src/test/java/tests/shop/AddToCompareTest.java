@@ -10,6 +10,7 @@ import tests.AbstractTest;
 import utils.User;
 
 public class AddToCompareTest extends AbstractTest {
+
     @DisplayName("Check the functionality of adding item to comparison list")
     @Test
     void addItemToComparisonListTest() {
@@ -26,13 +27,13 @@ public class AddToCompareTest extends AbstractTest {
                 .clickMenBottoms();
 
         String firstItemPrice = menBottomsPage
-                .getFirstItemPrice();
+                .getItemPrice(0);
 
         String firstItemName = menBottomsPage
-                .getFirstItemName();
+                .getItemName(0);
 
         ComparisonListPage comparisonListPage = menBottomsPage
-                .addFirstItemToCompare()
+                .addFirstItemToCompare(0)
                 .goToComparisonList();
 
         comparisonListPage

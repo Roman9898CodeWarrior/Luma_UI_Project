@@ -11,7 +11,7 @@ public class EditAddressPage {
     private final SelenideElement phoneNumber = $("input#telephone");
     private final SelenideElement streetAddress = $("input#street_1");
     private final SelenideElement city = $("input#city");
-    private final SelenideElement zip = $("input#zip");
+    private final SelenideElement postcode = $("input#zip");
     private final SelenideElement country = $("select#country");
     private final SelenideElement saveBtn = $("button.save");
     private final SelenideElement streetAddressError = $("div#street_1-error");
@@ -45,8 +45,8 @@ public class EditAddressPage {
     }
 
     @Step("Entering user zip-code {value}")
-    public EditAddressPage enterZip(String value) {
-        zip.setValue(value);
+    public EditAddressPage enterPostcode(String value) {
+        postcode.setValue(value);
 
         return this;
     }

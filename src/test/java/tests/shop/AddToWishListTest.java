@@ -10,6 +10,7 @@ import tests.AbstractTest;
 import utils.User;
 
 public class AddToWishListTest extends AbstractTest {
+
     @DisplayName("Check the functionality of adding item to wishlist")
     @Test
     void addItemToWishlistTest() {
@@ -26,13 +27,13 @@ public class AddToWishListTest extends AbstractTest {
                 .clickMenBottoms();
 
         String firstItemPrice = menBottomsPage
-                .getFirstItemPrice();
+                .getItemPrice(0);
 
         String firstItemName = menBottomsPage
-                .getFirstItemName();
+                .getItemName(0);
 
         MyWishListPage myWishListPage = menBottomsPage
-                .addFirstItemToWishlist();
+                .addFirstItemToWishlist(0);
 
         myWishListPage
                 .checkItemPrice(firstItemPrice);

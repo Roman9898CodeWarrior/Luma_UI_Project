@@ -30,7 +30,6 @@ public class ResetPasswordTests extends AbstractTest {
                 .checkResetPasswordMessage(expectedMessageText);
     }
 
-
     @DisplayName("Check the functionality of resetting password - negative case (invalid email)")
     @Test
     void resetPasswordTestInvalidEmail() {

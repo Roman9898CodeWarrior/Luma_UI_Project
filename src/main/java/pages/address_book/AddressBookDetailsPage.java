@@ -2,6 +2,7 @@ package pages.address_book;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import models.ShippingAddressModel;
 
 import static com.codeborne.selenide.Condition.and;
 import static com.codeborne.selenide.Condition.text;
@@ -19,13 +20,13 @@ public class AddressBookDetailsPage {
         return new EditAddressPage();
     }
 
-    @Step("Checking changed Billing Address: {phoneNumber}, {streetAddress}, {city}, {zip}, {country} expected")
-    public void checkChangedBillingAddress(String phoneNumber, String streetAddress, String city, String zip, String country) {
+    @Step("Checking changed Billing Address")
+    public void checkChangedBillingAddress(ShippingAddressModel fields) {
         billingAddress.shouldHave(and("required fields",
-                        text(phoneNumber),
-                        text(streetAddress),
-                        text(city),
-                        text(zip),
-                        text(country)));
+                        text(fields.getPhoneNumber()),
+                        text(fields.getStreetAddress()),
+                        text(fields.getCity()),
+                        text(fields.getPostcode()),
+                        text(fields.getCountry())));
     }
 }

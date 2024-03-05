@@ -25,25 +25,25 @@ public class MenBottomsPage {
         return this;
     }
 
-    @Step("Adding first item to wishlist")
-    public MyWishListPage addFirstItemToWishlist() {
-        items.first().hover();
-        items.first().$("a.towishlist").click();
+    @Step("Adding item to wishlist")
+    public MyWishListPage addFirstItemToWishlist(int index) {
+        items.get(index).hover();
+        items.get(index).$("a.towishlist").click();
 
         return new MyWishListPage();
     }
 
-    @Step("Adding first item to comparison list")
-    public MenBottomsPage addFirstItemToCompare() {
-        items.first().hover();
-        items.first().$("a.tocompare").click();
+    @Step("Adding item to comparison list")
+    public MenBottomsPage addFirstItemToCompare(int index) {
+        items.get(index).hover();
+        items.get(index).$("a.tocompare").click();
 
         return this;
     }
 
-    @Step("Clicking on first item")
-    public FirstItemPage clickOnFirstItem() {
-        items.first().click();
+    @Step("Clicking on item")
+    public FirstItemPage clickOnItem(int index) {
+        items.get(index).click();
 
         return new FirstItemPage();
     }
@@ -62,23 +62,23 @@ public class MenBottomsPage {
         return new ComparisonListPage();
     }
 
-    @Step("Getting first item price")
-    public String getFirstItemPrice() {
-        return prices.first().getText();
+    @Step("Getting item's price")
+    public String getItemPrice(int index) {
+        return prices.get(index).getText();
     }
 
-    @Step("Getting first item color")
-    public String getFirstItemColor() {
-        return colorOptions.first().getAttribute("option-label");
+    @Step("Getting item's color")
+    public String getItemColor(int index) {
+        return colorOptions.get(index).getAttribute("option-label");
     }
 
-    @Step("Getting first item size")
-    public String getFirstItemSize() {
-        return sizeOptions.first().getAttribute("option-label");
+    @Step("Getting item's size")
+    public String getItemSize(int index) {
+        return sizeOptions.get(index).getAttribute("option-label");
     }
 
-    @Step("Getting first item name")
-    public String getFirstItemName() {
-        return itemNames.first().getText();
+    @Step("Getting item's name")
+    public String getItemName(int index) {
+        return itemNames.get(index).getText();
     }
 }

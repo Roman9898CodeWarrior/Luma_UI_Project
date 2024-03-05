@@ -24,13 +24,17 @@ public class AddToCartTest extends AbstractTest {
                 .clickMenBottoms();
 
         String firstItemPrice = menBottomsPage
-                .getFirstItemPrice();
+                .getItemPrice(0);
+
         String firstItemColor = menBottomsPage
-                .getFirstItemColor();
+                .getItemColor(0);
+
         String firstItemSize = menBottomsPage
-                .getFirstItemSize();
+                .getItemSize(0);
+
         String firstItemName = menBottomsPage
-                .getFirstItemName();
+                .getItemName(0);
+
 
         CartPage cartPage = menBottomsPage
                 .addItemsToCartByIndex(0)

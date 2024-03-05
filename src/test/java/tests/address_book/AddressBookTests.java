@@ -1,5 +1,6 @@
 package tests.address_book;
 
+import models.ShippingAddressModel;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,11 +17,13 @@ public class AddressBookTests extends AbstractTest {
     @DisplayName("Check the functionality of changing user address")
     @Test
     void changeAddressTest() {
-        String phoneNumber = RandomStringUtils.randomNumeric(7);
-        String streetAddress = "Seongdong-gu Haengdang-dong 19-109";
-        String city = "Seoul";
-        String zip = RandomStringUtils.randomNumeric(4);
-        String country = "South Korea";
+        ShippingAddressModel fields = ShippingAddressModel.builder()
+                .streetAddress(RandomStringUtils.randomAlphabetic(5))
+                .city(RandomStringUtils.randomAlphabetic(5))
+                .postcode(RandomStringUtils.randomNumeric(5))
+                .country("United States")
+                .phoneNumber(RandomStringUtils.randomNumeric(5))
+                .build();
 
         LoginPage loginPage = new HomePage()
                 .openSignInPage();
@@ -35,23 +38,25 @@ public class AddressBookTests extends AbstractTest {
         EditAddressPage editAddressPage = addressBookDetailsPage.clickingChangeBillingAddress();
 
         addressBookDetailsPage = editAddressPage
-                .enterPhoneNumber(phoneNumber)
-                .enterStreetAddress(streetAddress)
-                .enterCity(city)
-                .enterZip(zip)
-                .selectCountry(country)
+                .enterPhoneNumber(fields.getPhoneNumber())
+                .enterStreetAddress(fields.getStreetAddress())
+                .enterCity(fields.getCity())
+                .enterPostcode(fields.getPostcode())
+                .selectCountry(fields.getCountry())
                 .clickSaveBtn();
 
-        addressBookDetailsPage.checkChangedBillingAddress(phoneNumber, streetAddress, city, zip, country);
+        addressBookDetailsPage.checkChangedBillingAddress(fields);
     }
 
     @DisplayName("Check the functionality of changing user address - negative case (street field is empty)")
     @Test
     void changeAddressTestStreetFieldIsEmpty() {
-        String phoneNumber = RandomStringUtils.randomNumeric(7);
-        String city = "Seoul";
-        String zip = RandomStringUtils.randomNumeric(4);
-        String country = "South Korea";
+        ShippingAddressModel fields = ShippingAddressModel.builder()
+                .city(RandomStringUtils.randomAlphabetic(5))
+                .postcode(RandomStringUtils.randomNumeric(5))
+                .country("United States")
+                .phoneNumber(RandomStringUtils.randomNumeric(5))
+                .build();
         String addressError = "This is a required field.";
 
         LoginPage loginPage = new HomePage()
@@ -67,11 +72,11 @@ public class AddressBookTests extends AbstractTest {
         EditAddressPage editAddressPage = addressBookDetailsPage.clickingChangeBillingAddress();
 
         editAddressPage
-                .enterPhoneNumber(phoneNumber)
+                .enterPhoneNumber(fields.getPhoneNumber())
                 .clearStreetAddress()
-                .enterCity(city)
-                .enterZip(zip)
-                .selectCountry(country)
+                .enterCity(fields.getCity())
+                .enterPostcode(fields.getPostcode())
+                .selectCountry(fields.getCountry())
                 .clickSaveBtnNegative()
                 .checkStreetAddressError(addressError);
     }

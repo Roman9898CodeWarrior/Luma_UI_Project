@@ -1,10 +1,12 @@
 package pages.shop;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.*;
+import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static junit.framework.Assert.assertFalse;
@@ -15,7 +17,7 @@ public class WomenTopsPage {
     private final SelenideElement sorterDropdown = $("select#sorter");
     private final ElementsCollection productPrices = $$("span.price-wrapper");
     private final ElementsCollection filterOptions = $$("div.filter-options div.filter-options-item");
-    private final SelenideElement blueFilter = $("div.filter-options-content div[option-label='Blue']");
+    private final ElementsCollection filterOptionContent = $$("div.filter-options-content div.swatch-option.color");
     private final ElementsCollection filteredItemsColor = $$("div[aria-label='Color']");
     private final ElementsCollection priceFilter = $$("div.filter-options-content span.price");
     private final SelenideElement clearFilter = $("a.action.filter-clear");
@@ -40,17 +42,17 @@ public class WomenTopsPage {
     }
 
     @Step("Filter items by color")
-    public WomenTopsPage filterItemsByColor(String filterName) {
+    public WomenTopsPage filterItemsByColor(String filterName, String color) {
         filterOptions.find(text(filterName)).click();
-        blueFilter.click();
+        filterOptionContent.find(Condition.attribute("option-label", color)).click();
 
         return this;
     }
 
-    @Step("Checking that each item is present in blue color")
-    public void checkEachItemIsInBlueColor() {
+    @Step("Checking that each item is present in selected color")
+    public void checkEachItemIsInBlueColor(String color) {
         filteredItemsColor.forEach(element ->
-                element.find("[option-label='Blue']").should(exist));
+                element.find(By.cssSelector("[option-label='" + color + "']")).shouldBe(Condition.exist));
     }
 
     @Step("Filter items by price")
@@ -61,11 +63,11 @@ public class WomenTopsPage {
         return this;
     }
 
-    @Step("Checking that prices are in range 60-69 dollars")
-    public void checkPricesInRange() {
+    @Step("Checking that prices are in selected price range")
+    public void checkPricesInRange(int minPrice, int maxPrice) {
         productPrices.forEach(priceElement -> {
             int priceValue = Integer.parseInt(priceElement.getAttribute("data-price-amount"));
-            assertTrue("Price is not in range 60-69 dollars", priceValue >= 60 && priceValue <= 69);
+            assertTrue("Price is not in range 60-69 dollars", priceValue >= minPrice && priceValue <= maxPrice);
         });
     }
 
@@ -76,11 +78,11 @@ public class WomenTopsPage {
         return this;
     }
 
-    @Step("Checking that prices are not in range 60-69 dollars")
-    public void checkPricesNotInRange() {
+    @Step("Checking that prices are not in selected price range")
+    public void checkPricesNotInRange(int minPrice, int maxPrice) {
         productPrices.forEach(priceElement -> {
             int priceValue = Integer.parseInt(priceElement.getAttribute("data-price-amount"));
-            assertFalse("Price is in range 60-69 dollars", priceValue >= 60 && priceValue <= 69);
+            assertFalse("Price is in range 60-69 dollars", priceValue >= minPrice && priceValue <= maxPrice);
         });
     }
 
