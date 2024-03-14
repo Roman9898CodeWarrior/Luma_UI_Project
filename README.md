@@ -6,9 +6,9 @@ This project is a Java-based Selenium automation framework designed to thoroughl
 
 ## Test Cases
 
-A comprehensive set of test cases has been created to cover the functionality of the "Luma Shop" website. You can find the detailed test cases by clicking on the image below.
+A comprehensive set of test cases has been created to cover the functionality of the "Luma Shop" website. You can find the detailed test cases by clicking [here](https://blue-hellebore-94d.notion.site/7393777ab5b945498b57d686c38efa0d?v=eadcfef235bf42798a504ac28689da30).
 
-![Preview of Test Cases](https://blue-hellebore-94d.notion.site/7393777ab5b945498b57d686c38efa0d?v=eadcfef235bf42798a504ac28689da30)
+![Preview of Test Cases](https://github.com/asnhtaa/Luma_UI_Project/blob/main/testCasesDemo/testCasesDemo.png)
 
 ## Technical Requirements
 
