@@ -35,7 +35,6 @@ public class AddToCartTest extends AbstractTest {
         String firstItemName = menBottomsPage
                 .getItemName(0);
 
-
         CartPage cartPage = menBottomsPage
                 .addItemsToCartByIndex(0)
                 .goToCart();

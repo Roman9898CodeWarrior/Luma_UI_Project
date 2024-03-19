@@ -13,7 +13,7 @@ import pages.shop.ThankYouForPurchasePage;
 import tests.AbstractTest;
 import utils.User;
 
-public class PlaceAnOrderTest extends AbstractTest {
+public class PlaceAnOrderTests extends AbstractTest {
 
     @DisplayName("Check the functionality of placing an order")
     @Test
@@ -59,15 +59,15 @@ public class PlaceAnOrderTest extends AbstractTest {
         String pageTitle= "Thank you for your purchase!";
         String orderMessage= "We'll email you an order confirmation with details and tracking info.";
         ShippingAddressModel fields = ShippingAddressModel.builder()
-                .firstname(RandomStringUtils.randomAlphabetic(5))
-                .lastname(RandomStringUtils.randomAlphabetic(5))
-                .streetAddress(RandomStringUtils.randomAlphabetic(5))
-                .city(RandomStringUtils.randomAlphabetic(5))
-                .stateOrProvince("Florida")
-                .postcode(RandomStringUtils.randomNumeric(5))
-                .country("United States")
-                .phoneNumber(RandomStringUtils.randomNumeric(5))
-                .build();
+                        .firstname(RandomStringUtils.randomAlphabetic(5))
+                        .lastname(RandomStringUtils.randomAlphabetic(5))
+                        .streetAddress(RandomStringUtils.randomAlphabetic(5))
+                        .city(RandomStringUtils.randomAlphabetic(5))
+                        .stateOrProvince("Florida")
+                        .postcode(RandomStringUtils.randomNumeric(5))
+                        .country("United States")
+                        .phoneNumber(RandomStringUtils.randomNumeric(5))
+                        .build();
 
         LoginPage loginPage = new HomePage()
                 .openSignInPage();

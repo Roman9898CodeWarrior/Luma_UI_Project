@@ -22,6 +22,7 @@ public class WomenTopsPage {
     private final ElementsCollection priceFilter = $$("div.filter-options-content span.price");
     private final SelenideElement clearFilter = $("a.action.filter-clear");
     private final SelenideElement searchField = $("input#search");
+    private final SelenideElement searchError = $("div.message.notice div");
     private final ElementsCollection clothesNames = $$("ol.products.product-items a.product-item-link");
 
     @Step("Sort items by price")
@@ -94,7 +95,12 @@ public class WomenTopsPage {
         return this;
     }
 
-    @Step("Checking item's name {value} expected")
+    @Step("Checking search error: {value} expected")
+    public void checkSearchErrorText(String value) {
+        searchError.shouldHave(text(value));
+    }
+
+    @Step("Checking item's name: {value} expected")
     public void checkItemsNames(String value) {
         clothesNames.forEach(clothesName -> clothesName.shouldHave(text(value)));
     }
