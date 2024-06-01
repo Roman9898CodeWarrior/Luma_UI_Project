@@ -2,7 +2,7 @@
 
 ## Project Description
 
-This project is a Java-based Selenium automation framework designed to thoroughly test the functionalities of the "Luma Shop" website. "Luma Shop" is a specially designed site aimed at honing the skills of automation testers. By utilizing Selenium WebDriver and JUnit 5 testing framework, the project provides a robust and reliable test suite to validate the behavior of the website under various scenarios.
+This project is a Java-based Selenium automation framework designed to thoroughly test the functionalities of the "Luma Shop" website. "Luma Shop" is a specially designed site aimed at honing the skills of automation testers. By utilizing Selenide and JUnit 5 testing framework, the project provides a robust and reliable test suite to validate the behavior of the website under various scenarios.
 
 ## Test Cases
 
@@ -40,5 +40,10 @@ git clone https://github.com/asnhtaa/Luma_UI_Project.git
 mvn clean test
 ```
 
-5) The tests will start running on the Chrome browser.
+## Note
+
+While this project was primarily developed using the Selenium framework with Selenide, a [miniature version](https://github.com/asnhtaa/Luma_Shop_Selenium_Automation_Project) has been created using Selenium WebDriver exclusively.
+
+
+
    
