@@ -18,6 +18,7 @@ public class LoginPage {
     private final SelenideElement invalidCredentialsErrorMessage = $("div.message-error div");
     private final SelenideElement forgotPassword = $("a.remind");
     private final SelenideElement resetPasswordMessage = $("div.message-success div");
+    private final SelenideElement sucсessfulChangeOfAccountInformationMessage = $("div[data-bind='html: $parent.prepareMessageForHtml(message.text)']");
 
     @Step("Entering user email {value}")
     public LoginPage enterEmail(String value) {
@@ -56,6 +57,15 @@ public class LoginPage {
         return new HomePage();
     }
 
+    @Step("Logging in after change of email")
+    public MyAccountPage loggingInAfterChangeOfEmail(String emailValue, String passwordValue) {
+        enterEmail(emailValue);
+        enterPassword(passwordValue);
+        clickSignInBtn();
+
+        return new MyAccountPage();
+    }
+
     @Step("Clicking 'Forgot Your Password?'")
     public ResetPasswordPage clickForgotPassword() {
         forgotPassword.click();
@@ -81,5 +91,10 @@ public class LoginPage {
     @Step("Checking reset password message: {expectedErrorMessage} expected")
     public void checkResetPasswordMessage(String expectedErrorMessage) {
         resetPasswordMessage.shouldHave(Condition.text(expectedErrorMessage));
+    }
+
+    @Step("Checking successful change of email message: {expectedMessage} expected")
+    public void checkSuccessfulChangeOfEmailMessage(String expectedMessage) {
+        sucсessfulChangeOfAccountInformationMessage.shouldHave(Condition.text(expectedMessage));
     }
 }

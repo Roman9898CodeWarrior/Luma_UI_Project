@@ -3,6 +3,7 @@ package pages.shop.components;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import pages.home.HomePage;
 import pages.shop.ThankYouForPurchasePage;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -14,6 +15,8 @@ public class PaymentComponent {
     private final SelenideElement discountCodeField = $("input#discount-code");
     private final SelenideElement applyDiscountBtn = $("button.action-apply");
     private final SelenideElement discountError = $("div[data-role='checkout-messages'] div");
+    private final SelenideElement cardSubtotalSum = $("span[data-th='Cart Subtotal']");
+    private final SelenideElement homePageLink = $("a.logo");
 
     @Step("Clicking 'Place Order' button")
     public ThankYouForPurchasePage clickPlaceOrderBtn() {
@@ -35,5 +38,17 @@ public class PaymentComponent {
     @Step("Checking invalid discount code error message: {expectedErrorMessage} expected")
     public void checkInvalidDiscountCodeErrorMessage(String expectedErrorMessage) {
         discountError.shouldHave(Condition.text(expectedErrorMessage));
+    }
+
+    @Step("Checking that the sum in card subtotal is right")
+    public void checkСardSubtotalSum(String expectedСardSubtotalSum) {
+        cardSubtotalSum.shouldHave(Condition.text(expectedСardSubtotalSum));
+    }
+
+    @Step("Go to home page")
+    public HomePage GoToHomePage() {
+        homePageLink.click();
+
+        return new HomePage();
     }
 }

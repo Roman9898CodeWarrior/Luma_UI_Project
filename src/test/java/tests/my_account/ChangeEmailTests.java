@@ -12,6 +12,55 @@ import utils.User;
 
 public class ChangeEmailTests extends AbstractTest {
 
+    @DisplayName("Check the functionality of changing user email")
+    @Test
+    void changeEmailTest() {
+        String expectedMessageText = "You saved the account information.";
+        String email = "user1234@gmail.com";
+
+        LoginPage loginPage = new HomePage()
+                .openSignInPage();
+
+        HomePage homePage = loginPage
+                .loggingIn(User.getEmail(), User.getPassword());
+
+        MyAccountPage myAccountPage = homePage
+                .clickMyAccount();
+
+        EditAccountInformationPage editAccountInformationPage = myAccountPage
+                .clickAccountInformation();
+
+        editAccountInformationPage
+                .clickChangeEmailCheckbox()
+                .getChangeEmailComponent()
+                .enterEmail(email)
+                .enterCurrentPassword(User.getPassword());
+
+        loginPage = editAccountInformationPage
+                .clickSaveBtnAfterMailChange();
+
+        loginPage.checkSuccessfulChangeOfEmailMessage(expectedMessageText);
+
+        myAccountPage = loginPage
+                .loggingInAfterChangeOfEmail("user1234@gmail.com", User.getPassword());
+
+        myAccountPage.checkAccountInformation(email);
+
+        editAccountInformationPage = myAccountPage
+                .clickAccountInformation();
+
+        editAccountInformationPage
+                .clickChangeEmailCheckbox()
+                .getChangeEmailComponent()
+                .enterEmail("bychkov.roman17@yandex.ru")
+                .enterCurrentPassword(User.getPassword());
+
+        loginPage = editAccountInformationPage
+                .clickSaveBtnAfterMailChange();
+
+        loginPage.checkSuccessfulChangeOfEmailMessage(expectedMessageText);
+    }
+
     @DisplayName("Check the functionality of changing user email - negative case (invalid email)")
     @Test
     void changeEmailTestInvalidEmail() {

@@ -3,6 +3,7 @@ package pages.my_account;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import pages.login_user.LoginPage;
 import pages.login_user.MyAccountPage;
 import pages.my_account.components.ChangeEmailComponent;
 import pages.my_account.components.ChangePasswordComponent;
@@ -65,6 +66,13 @@ public class EditAccountInformationPage {
         saveBtn.click();
 
         return new MyAccountPage();
+    }
+
+    @Step("Clicking 'Save' button after changing of email")
+    public LoginPage clickSaveBtnAfterMailChange() {
+        saveBtn.click();
+
+        return new LoginPage();
     }
 
     @Step("Checking password error message: {passwordErrorMessage} expected")

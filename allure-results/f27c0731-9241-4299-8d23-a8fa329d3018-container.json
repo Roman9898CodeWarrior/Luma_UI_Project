@@ -1,0 +1,1 @@
+{"uuid":"f27c0731-9241-4299-8d23-a8fa329d3018","name":"Check the functionality of changing user password - negative case (password length is less than 8 symbols)","children":["ce1d6521-25ef-41ca-b642-e458c05433cb"],"befores":[],"afters":[],"start":1737129258844,"stop":1737129260049}

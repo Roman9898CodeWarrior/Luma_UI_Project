@@ -22,19 +22,13 @@ public class ShippingAddressComponent {
     private final SelenideElement saveInAddressBookCheckbox = $("input#shipping-save-in-address-book");
     private final SelenideElement addAddressBtn = $("button.action-show-popup");
     private final SelenideElement fieldError = $("div.field-error");
+    private final SelenideElement shipingMethodTableRateButton = $("input[value='tablerate_bestway']");
 
     @Step("Clicking '+ New Address' button")
     public ShippingAddressComponent clickAddAddressBtn() {
         addAddressBtn.click();
 
         return this;
-    }
-
-    @Step("Clicking 'Next' checkbox")
-    public PaymentComponent clickNextBtn() {
-        nextBtn.click();
-
-        return new PaymentComponent();
     }
 
     @Step("Entering new shipping address {value}")
@@ -50,6 +44,22 @@ public class ShippingAddressComponent {
 
         return this;
     }
+
+    @Step("Clicking first shipping method radio button")
+    public ShippingAddressComponent clickFirstShippingMethodButton() {
+        shipingMethodTableRateButton.click();
+
+        return this;
+    }
+
+    @Step("Clicking 'Next' checkbox")
+    public PaymentComponent clickNextBtn() {
+        nextBtn.click();
+
+        return new PaymentComponent();
+    }
+
+
 
     @Step("Entering user firstname {value}")
     public ShippingAddressComponent enterFirstname(String value) {

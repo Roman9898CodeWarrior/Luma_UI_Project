@@ -1,0 +1,1 @@
+{"uuid":"229f5ea8-e82f-4c13-b83c-b03435d531ec","name":"Check that When user add item to the basket, it's correct price is seen on checkout","children":["7d62a8fc-baf4-460a-a6f1-ce947ce3974f"],"befores":[],"afters":[],"start":1737468382455,"stop":1737468495807}

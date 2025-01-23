@@ -1,0 +1,1 @@
+{"uuid":"403a2d3d-d8d5-48c0-92a6-4bb42672656f","name":"Check the functionality of registering a user - negative case (password length is less than 8 symbols)","children":["3890f22a-684b-4c3c-b4ff-8e31cf15f8b1"],"befores":[],"afters":[],"start":1737128543078,"stop":1737128543893}
