@@ -1,18 +1,38 @@
 package tests.shop;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import models.ShippingAddressModel;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.home.HomePage;
 import pages.login_user.LoginPage;
+import pages.register_user.UserData;
 import pages.shop.GoodsCategoryPage;
 import pages.shop.components.PaymentComponent;
 import pages.shop.components.ShippingAddressComponent;
 import tests.AbstractTest;
 import utils.User;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import lombok.SneakyThrows;
 
 public class AddToBasket extends AbstractTest {
+    String password = RandomStringUtils.randomAlphabetic(10) + RandomStringUtils.randomNumeric(5) + "*?%;";
+    String email = "user" + RandomStringUtils.randomNumeric(5) + "@gmail.com";
+    UserData uD = new UserData("XbW2plyKhAPX8vVK", "", "", "Alex", "Black", email, password, password);
+
+    @Test @SneakyThrows
+    public void registerUser() {
+        ObjectMapper mapper = new ObjectMapper();
+        RestAssured.given()
+                .baseUri("https://magento.softwaretestingboard.com/customer/account/createpost/")
+                .contentType(ContentType.TEXT)
+                .body(mapper.writeValueAsString(uD))
+                .when().post().then()
+                .statusCode(302);
+    }
+
 
     @DisplayName("Check that When user add item to the basket, it's correct price is seen on checkout ")
     @Test
@@ -39,7 +59,7 @@ public class AddToBasket extends AbstractTest {
                 .openSignInPage();
 
         HomePage homePage = loginPage
-                .loggingIn(User.getEmail(), User.getPassword());
+                .loggingIn(email, password);
 
         GoodsCategoryPage goodsCategoryPage = homePage.goToGoodsCategoryPage(navItemId, subcategoryId, typeOfClothingId);
 
